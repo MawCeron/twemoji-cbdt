@@ -5,10 +5,10 @@ graphics into a color emoji font. Each emoji is a PNG image inside the font
 (`CBDT` and `CBLC` tables, the format Noto Color Emoji used before it moved
 to `COLRv1`).
 
-The font is called `Twemoji`. It is built from Twemoji 17.0.3, which follows
-the Unicode 17 emoji, and handles flags, skin tones and ZWJ sequences with
-ligature rules. GTK 4.22.5's emoji picker shows all 1910 emoji it lists with
-it.
+The font family is called `Twemoji CBDT`. It is built from Twemoji 17.0.3,
+which follows the Unicode 17 emoji, and handles flags, skin tones and ZWJ
+sequences with ligature rules. GTK 4.22.5's emoji picker shows all 1910 emoji
+it lists with it.
 
 It is not affiliated with Twitter, X Corp. or the Twemoji project.
 
@@ -41,7 +41,7 @@ sudo dnf install python3-fonttools python3-pillow
 ```
 
 It downloads the graphics at a pinned version into `build/`, builds
-`build/Twemoji.ttf` and checks it. `build_cbdt.py` builds a font from any
+`build/TwemojiCBDT.ttf` and checks it. `build_cbdt.py` builds a font from any
 directory of PNG files named by code points, like `1f600.png` or
 `1f468-200d-1f469-200d-1f467.png`:
 
@@ -53,12 +53,12 @@ python3 build_cbdt.py PNG_DIR OUT.ttf [FAMILY [VERSION]]
 
 ```sh
 mkdir -p ~/.local/share/fonts
-cp build/Twemoji.ttf ~/.local/share/fonts/
+cp build/TwemojiCBDT.ttf ~/.local/share/fonts/
 fc-cache -f
 ```
 
-Fedora's `twitter-twemoji-fonts` has the same family name, so install only
-one of them.
+The family name differs from Fedora's `twitter-twemoji-fonts`, which is
+called `Twemoji`, so both can be installed.
 
 ## Limits
 
