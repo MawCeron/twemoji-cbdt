@@ -9,7 +9,7 @@ cmap = font.getBestCmap()
 cblc = font["CBLC"].strikes[0]
 bitmaps = font["CBDT"].strikeData[0]
 
-assert name(1) == "Twemoji", name(1)
+assert name(1) == "Twemoji CBDT", name(1)
 assert 0x1F600 in cmap and cmap[0x1F600] in bitmaps, "U+1F600 has no image"
 assert 0x200D in cmap and cmap[0x200D] not in bitmaps, "ZWJ must be a blank glyph"
 assert "GSUB" in font and "glyf" not in font

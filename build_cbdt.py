@@ -14,7 +14,7 @@ from fontTools.fontBuilder import FontBuilder
 from PIL import Image
 
 png_dir, out_path = sys.argv[1], sys.argv[2]
-family = sys.argv[3] if len(sys.argv) > 3 else "Twemoji"
+family = sys.argv[3] if len(sys.argv) > 3 else "Twemoji CBDT"
 version = sys.argv[4] if len(sys.argv) > 4 else "1.0"
 
 UPM = 2048
@@ -75,8 +75,8 @@ fb.setupNameTable({
     "familyName": family,
     "styleName": "Regular",
     "fullName": family,
-    "psName": family + "-Regular",
-    "uniqueFontIdentifier": family + "-" + version,
+    "psName": family.replace(" ", "") + "-Regular",
+    "uniqueFontIdentifier": family.replace(" ", "") + "-" + version,
     "version": "Version " + version,
     "copyright": "Graphics: Copyright (c) 2014-2021 Twitter; (c) 2022-present Jason Sofonia & Justine De Caires, CC BY 4.0",
     "licenseDescription": "The graphics are licensed under CC BY 4.0; credit Twitter and the Twemoji contributors and note that they were changed.",
