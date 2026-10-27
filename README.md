@@ -1,7 +1,7 @@
 # twemoji-cbdt
 
-Builds a color emoji font from the [Twemoji](https://github.com/jdecked/twemoji)
-graphics, as a bitmap font: every emoji is a PNG image inside the font
+A script that turns the [Twemoji](https://github.com/jdecked/twemoji)
+graphics into a color emoji font. Each emoji is a PNG image inside the font
 (`CBDT` and `CBLC` tables, the format Noto Color Emoji used before it moved
 to `COLRv1`).
 
@@ -10,14 +10,13 @@ the Unicode 17 emoji, and handles flags, skin tones and ZWJ sequences with
 ligature rules. GTK 4.22.5's emoji picker shows all 1910 emoji it lists with
 it.
 
-This project is independent. It is not affiliated with Twitter, X Corp. or
-the Twemoji project.
+It is not affiliated with Twitter, X Corp. or the Twemoji project.
 
 ## Why bitmaps
 
-Drawing many emoji with a vector color font (`COLR`) makes cairo, which GTK
-uses to draw in software, fill a glyph cache of hundreds of megabytes that
-it never frees. A bitmap font does not. In GTK 4.22.5, opening the emoji
+Drawing many emoji with a vector color font (`COLR`) fills a glyph cache of
+hundreds of megabytes in cairo, which GTK uses to draw in software, and cairo
+never frees it. A bitmap font avoids that. In GTK 4.22.5, opening the emoji
 picker with the cairo renderer takes an app from about 35 MB to:
 
 | Font | Memory after opening the picker |
@@ -28,8 +27,8 @@ picker with the cairo renderer takes an app from about 35 MB to:
 
 The measurements are in
 [Wassup's `docs/performance.md`](https://github.com/MawCeron/Wassup/blob/main/docs/performance.md#emoji-picker).
-The font Fedora ships is Twemoji 14, from 2021, and lacks the emoji added to
-Unicode since; this one is built from the current artwork.
+Fedora ships Twemoji 14, which lacks the emoji added to Unicode since; this
+font is built from the current artwork.
 
 ## Building
 
@@ -64,10 +63,9 @@ one of them.
 ## Limits
 
 - The images are 72 px tall, so the emoji look soft when drawn large.
-- Bitmap color fonts work with FreeType, Android and Chrome, not on Windows
-  or macOS.
+- It has only been tested with GTK 4.22.5 on Fedora 44.
 - If a system also has Symbola, a monochrome symbol font, GTK's emoji picker
-  can drop wide emoji such as flags; hiding Symbola avoids it.
+  can drop wide emoji such as flags. Hiding Symbola avoids it.
 
 ## License
 
